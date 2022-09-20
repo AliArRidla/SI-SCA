@@ -34,8 +34,10 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Latest Report"),
-                Text("50%"),
+                Text("Latest Report",
+                    style: TextStyle(fontSize: 20, color: Colors.black)),
+                Text("50%",
+                    style: TextStyle(fontSize: 20, color: Colors.black)),
               ],
             ),
             Container(
@@ -46,26 +48,98 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 // color: Colors.blue,
                 gradient: primaryGradient,
-                borderRadius: BorderRadius.circular(20),
+                // borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 200, 200, 200).withOpacity(0.1),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 50,
+                        ),
+                        Text("Heart Rate",
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.white)),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text("96",
+                                style: TextStyle(
+                                    fontSize: 50, color: Colors.white)),
+                            Text("bpm",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.white))
+                          ],
+                        )
+                      ],
+                    ),
+                    Image.asset(
+                      'lib/assets/images/rate.png',
+                      width: 120,
+                    )
+                  ],
+                ),
               ),
             ),
             SizedBox(
               height: 30,
             ),
-            Text("Heart Analysis"),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              height: 175,
-              // width: 300,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                // gradient: primaryGradient,
-                borderRadius: BorderRadius.circular(20),
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Heart Analysis",
+                    style: TextStyle(fontSize: 20, color: Colors.black)),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  height: 175,
+                  // width: 300,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15),
+                        bottomRight: Radius.circular(15)),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Color.fromARGB(255, 200, 200, 200).withOpacity(0.1),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [Text("Status")],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -78,11 +152,11 @@ class HomeScreen extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Monitor',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'School',
+            label: 'Report',
           ),
         ],
         selectedItemColor: Colors.amber[800],
