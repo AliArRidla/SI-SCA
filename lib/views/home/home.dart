@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:si_sca/utils/theme.dart';
+import 'package:si_sca/views/profile/profile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -7,6 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Container(
         margin: EdgeInsets.only(top: 90, left: 24, right: 24),
         child: Column(
@@ -21,9 +23,17 @@ class HomeScreen extends StatelessWidget {
                     Text("Vandy"),
                   ],
                 ),
-                Image.asset(
-                  'lib/assets/images/profile.png',
-                  width: 40,
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ProfileScreen()));
+                  },
+                  child: Image.asset(
+                    'lib/assets/images/profile.png',
+                    width: 40,
+                  ),
                 )
                 // Image.asset("name")
               ],
