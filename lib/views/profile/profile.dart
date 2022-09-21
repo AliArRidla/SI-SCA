@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:si_sca/views/settings/settings.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -43,15 +44,23 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.person),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text("Account Settings"),
-                ],
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingsScreen()));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.person),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("Account Settings"),
+                  ],
+                ),
               ),
             ),
             Container(
