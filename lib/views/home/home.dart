@@ -1,16 +1,34 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:si_sca/utils/theme.dart';
+import 'package:si_sca/views/monitor/monitor.dart';
 import 'package:si_sca/views/profile/profile.dart';
+import 'package:si_sca/views/report/report.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text(
+          "Dashboard",
+          style: textSubHeading,
+        ),
+        foregroundColor: primaryColor,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Container(
-        margin: EdgeInsets.only(top: 90, left: 24, right: 24),
+        margin: EdgeInsets.only(top: 10, left: 24, right: 24),
         child: Column(
           children: [
             Row(
@@ -19,22 +37,48 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Hello"),
-                    Text("Vandy"),
+                    Row(
+                      children: [
+                        Text(
+                          "Hello",
+                          style: textSubHeading.copyWith(color: Colors.grey),
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Image.asset(
+                          'lib/assets/icons/hello.png',
+                          width: 20,
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "Vandy",
+                      style: textHeading.copyWith(
+                          fontWeight: FontWeight.bold, color: primaryColor),
+                    ),
                   ],
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProfileScreen()));
-                  },
-                  child: Image.asset(
-                    'lib/assets/images/profile.png',
-                    width: 40,
+                CircleAvatar(
+                  backgroundColor: Colors.grey[200],
+                  child: IconButton(
+                    onPressed: (() {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ProfileScreen()));
+                    }),
+                    icon: Icon(
+                      CupertinoIcons.person_fill,
+                      color: primaryColor,
+                    ),
                   ),
-                )
+                ),
+                //   child: Image.asset(
+                //     'lib/assets/images/profile.png',
+                //     width: 50,
+                //   ),
+                // )
                 // Image.asset("name")
               ],
             ),
@@ -45,13 +89,29 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Latest Report",
-                    style: TextStyle(fontSize: 20, color: Colors.black)),
-                Text("50%",
-                    style: TextStyle(fontSize: 20, color: Colors.black)),
+                    style: textBody.copyWith(
+                      // fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    )),
+                Row(
+                  children: [
+                    Icon(
+                      CupertinoIcons.battery_25_percent,
+                      color: Colors.grey,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("50%",
+                        style: textBody.copyWith(
+                          color: Colors.grey,
+                        )),
+                  ],
+                ),
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: EdgeInsets.only(top: 10),
               height: 175,
               // width: 300,
               width: double.infinity,
@@ -92,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             Text("96",
                                 style: TextStyle(
-                                    fontSize: 50, color: Colors.white)),
+                                    fontSize: 46, color: Colors.white)),
                             Text("bpm",
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.white))
@@ -115,13 +175,16 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Heart Analysis",
-                    style: TextStyle(fontSize: 20, color: Colors.black)),
+                    style: textBody.copyWith(
+                      // fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    )),
                 SizedBox(
                   height: 10,
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 20),
-                  height: 175,
+                  padding: EdgeInsets.only(bottom: 20),
+                  // height: MediaQuery.of(context).size.width - 120,
                   // width: 300,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -142,10 +205,43 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [Text("Status")],
+                    // margin: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Status",
+                            style: textBody.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: primaryColor,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(" - Your heart is in bad condition"),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(" - Heart rate is too high"),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Disease",
+                            style: textBody.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: primaryColor),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(" - Ventricular fibrillation"),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -153,23 +249,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Monitor',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Report',
-          ),
-        ],
-        selectedItemColor: Colors.amber[800],
       ),
     );
   }

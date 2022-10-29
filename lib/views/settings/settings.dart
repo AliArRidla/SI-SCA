@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:si_sca/utils/theme.dart';
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({Key key}) : super(key: key);
 
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _ageController = TextEditingController();
+  TextEditingController _genderController = TextEditingController();
+  TextEditingController _weightController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,134 +35,147 @@ class SettingsScreen extends StatelessWidget {
                 'lib/assets/images/profile_detail.png',
                 width: 100,
               ),
-              // Row(
-              //   children: [
-              //     TextFormField(
-              //       decoration: const InputDecoration(
-              //         icon: Icon(Icons.person),
-              //         hintText: 'What do people call you?',
-              //         labelText: 'Name *',
-              //       ),
-              //       onSaved: (String? value) {
-              //         // This optional block of code can be used to run
-              //         // code when the user saves the form.
-              //       },
-              //       validator: (String? value) {
-              //         return (value != null && value.contains('@'))
-              //             ? 'Do not use the @ char.'
-              //             : null;
-              //       },
-              //     ),
-              //     TextFormField(
-              //       decoration: const InputDecoration(
-              //         icon: Icon(Icons.person),
-              //         hintText: 'What do people call you?',
-              //         labelText: 'Name *',
-              //       ),
-              //       onSaved: (String? value) {
-              //         // This optional block of code can be used to run
-              //         // code when the user saves the form.
-              //       },
-              //       validator: (String? value) {
-              //         return (value != null && value.contains('@'))
-              //             ? 'Do not use the @ char.'
-              //             : null;
-              //       },
-              //     )
-              //   ],
-              // ),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                validator: (value) => value == null || value.isEmpty
+                    ? "Tidak boleh kosong"
+                    : null,
+                controller: _nameController,
+                cursorColor: primaryColor,
+                decoration: InputDecoration(
+                  fillColor: thirdColor,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
 
-              TextFormField(
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.person),
-                  hintText: 'What do people call you?',
-                  labelText: 'Name *',
+                  // border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: "Username",
+                  hintText: "Silahkan masukkan username anda",
+                  hintStyle: textBody.copyWith(color: secondaryColor),
                 ),
-                onSaved: (String? value) {
-                  // This optional block of code can be used to run
-                  // code when the user saves the form.
-                },
-                validator: (String? value) {
-                  return (value != null && value.contains('@'))
-                      ? 'Do not use the @ char.'
-                      : null;
-                },
+              ),
+              SizedBox(
+                height: 16,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.person),
-                  hintText: 'What do people call you?',
-                  labelText: 'Email Address *',
+                validator: (value) => value == null || value.isEmpty
+                    ? "Tidak boleh kosong"
+                    : null,
+                controller: _emailController,
+                cursorColor: primaryColor,
+                decoration: InputDecoration(
+                  fillColor: thirdColor,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+
+                  // border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: "Email",
+                  hintText: "Silahkan masukkan email anda",
+                  hintStyle: textBody.copyWith(color: secondaryColor),
                 ),
-                onSaved: (String? value) {
-                  // This optional block of code can be used to run
-                  // code when the user saves the form.
-                },
-                validator: (String? value) {
-                  return (value != null && value.contains('@'))
-                      ? 'Do not use the @ char.'
-                      : null;
-                },
+              ),
+              SizedBox(
+                height: 16,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.person),
-                  hintText: 'What do people call you?',
-                  labelText: 'Age *',
+                validator: (value) => value == null || value.isEmpty
+                    ? "Tidak boleh kosong"
+                    : null,
+                controller: _ageController,
+                cursorColor: primaryColor,
+                decoration: InputDecoration(
+                  fillColor: thirdColor,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+
+                  // border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: "Umur",
+                  hintText: "Silahkan masukkan umur anda",
+                  hintStyle: textBody.copyWith(color: secondaryColor),
                 ),
-                onSaved: (String? value) {
-                  // This optional block of code can be used to run
-                  // code when the user saves the form.
-                },
-                validator: (String? value) {
-                  return (value != null && value.contains('@'))
-                      ? 'Do not use the @ char.'
-                      : null;
-                },
+              ),
+              SizedBox(
+                height: 16,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.person),
-                  hintText: 'What do people call you?',
-                  labelText: 'Gender*',
+                validator: (value) => value == null || value.isEmpty
+                    ? "Tidak boleh kosong"
+                    : null,
+                controller: _genderController,
+                cursorColor: primaryColor,
+                decoration: InputDecoration(
+                  fillColor: thirdColor,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+
+                  // border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: "Gender",
+                  hintText: "Silahkan masukkan gender anda",
+                  hintStyle: textBody.copyWith(color: secondaryColor),
                 ),
-                onSaved: (String? value) {
-                  // This optional block of code can be used to run
-                  // code when the user saves the form.
-                },
-                validator: (String? value) {
-                  return (value != null && value.contains('@'))
-                      ? 'Do not use the @ char.'
-                      : null;
-                },
+              ),
+              SizedBox(
+                height: 16,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                  icon: Icon(Icons.person),
-                  hintText: 'What do people call you?',
-                  labelText: 'Weight*',
+                validator: (value) => value == null || value.isEmpty
+                    ? "Tidak boleh kosong"
+                    : null,
+                controller: _weightController,
+                cursorColor: primaryColor,
+                decoration: InputDecoration(
+                  fillColor: thirdColor,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+
+                  // border: InputBorder.none,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  labelText: "Weight",
+                  hintText: "Silahkan masukkan berat anda",
+                  hintStyle: textBody.copyWith(color: secondaryColor),
                 ),
-                onSaved: (String? value) {
-                  // This optional block of code can be used to run
-                  // code when the user saves the form.
-                },
-                validator: (String? value) {
-                  return (value != null && value.contains('@'))
-                      ? 'Do not use the @ char.'
-                      : null;
-                },
               ),
               SizedBox(
                 height: 50,
               ),
-              RaisedButton(
-                onPressed: () {},
-                color: Colors.transparent,
-                elevation: 0,
+              InkWell(
+                onTap: () {},
+                // color: Colors.transparent,
+                // elevation: 0,
                 child: Container(
                   decoration: BoxDecoration(
                       gradient: primaryGradient,
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Center(
                     child: Text(

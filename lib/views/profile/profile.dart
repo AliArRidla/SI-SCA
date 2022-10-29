@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:si_sca/views/device/device.dart';
+import 'package:si_sca/views/device/device_list.dart';
+import 'package:si_sca/views/device/device_revision.dart';
 import 'package:si_sca/views/settings/settings.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
         foregroundColor: Colors.black,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Second Route'),
+        title: const Text('Profile'),
       ),
       body: Center(
         child: Column(
