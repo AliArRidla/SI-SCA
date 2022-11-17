@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       width: 10,
                     ),
-                    Text("50%",
+                    Text("50%", //get battery
                         style: textBody.copyWith(
                           color: Colors.grey,
                         )),
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("96",
+                            Text("96", // get data here
                                 style: TextStyle(
                                     fontSize: 46, color: Colors.white)),
                             Text("bpm",

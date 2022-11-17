@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:si_sca/views/device/device_revision.dart';
 import 'package:si_sca/views/home/home.dart';
 import 'package:si_sca/views/home/main.dart';
 import 'package:si_sca/views/monitor/monitor.dart';
@@ -12,8 +13,11 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(
         Duration(seconds: 5),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => MainScreen())));
+        () => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (BuildContext context) => DeviceScreen(),
+              ),
+            ));
     return Scaffold(
       body: Center(
         child: Column(

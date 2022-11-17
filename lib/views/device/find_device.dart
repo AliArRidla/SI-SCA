@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+import 'package:si_sca/utils/theme.dart';
 import 'package:si_sca/views/device/device_detail.dart';
 import 'package:si_sca/views/device/device_list.dart';
 import 'package:si_sca/views/device/widgets.dart';
@@ -33,6 +34,11 @@ class FindDeviceScreen extends StatelessWidget {
                                 if (snapshot.data ==
                                     BluetoothDeviceState.connected) {
                                   return ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              primaryColor),
+                                    ),
                                     child: Text('OPEN'),
                                     onPressed: () => Navigator.of(context).push(
                                         MaterialPageRoute(
@@ -83,6 +89,7 @@ class FindDeviceScreen extends StatelessWidget {
           } else {
             return FloatingActionButton(
                 child: Icon(Icons.search),
+                backgroundColor: primaryColor,
                 onPressed: () => FlutterBlue.instance
                     .startScan(timeout: Duration(seconds: 4)));
           }

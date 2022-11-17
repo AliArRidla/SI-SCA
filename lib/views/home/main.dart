@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:si_sca/utils/theme.dart';
+import 'package:si_sca/views/device/device_revision.dart';
 import 'package:si_sca/views/home/home.dart';
 import 'package:si_sca/views/monitor/monitor.dart';
 import 'package:si_sca/views/profile/profile.dart';

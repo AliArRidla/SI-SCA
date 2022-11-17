@@ -13,7 +13,11 @@ class DeviceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ini Main"),
+        // title: Text("Ini Main"),
+        backgroundColor: primaryColor,
+        elevation: 0,
+        foregroundColor: Colors.white,
+        title: Text("List Bluetooth"),
       ),
       body: StreamBuilder<BluetoothState>(
           stream: FlutterBlue.instance.state,
@@ -37,19 +41,25 @@ class BluetoothOffScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      // backgroundColor: Colors.lightBlue,
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Icon(
-              Icons.bluetooth_disabled,
-              size: 200.0,
-              color: Colors.white54,
-            ),
-            Text('Bluetooth Adapter is ${state.toString().substring(15)}.',
-                style: satuTextStyle),
-          ],
+        child: Container(
+          child: Column(
+            // mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.bluetooth_disabled,
+                size: 150.0,
+                color: primaryColor,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Text('Bluetooth Adapter is ${state.toString().substring(15)}.',
+                  style: duaTextStyle),
+            ],
+          ),
         ),
       ),
     );
